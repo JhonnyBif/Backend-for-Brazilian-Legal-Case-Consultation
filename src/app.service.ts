@@ -22,6 +22,23 @@ export class AppService {
     return resultado;
   }
 
+  async getProcessoMov(n_processo: string) {
+    const processo = this.validaNumero(n_processo);
+    const numeroCNJ = processo.numeroCNJ; 
+
+    if (!this.tribunais[processo.j] || !this.tribunais[processo.j][processo.tr -1] || !this.tribunais[processo.j][processo.tr -1].link) {
+      return console.error(`Erro! O Tribunal não possui API.`);
+    }
+    const api = this.tribunais[processo.j][processo.tr -1].link;
+    const tribunal = this.tribunais[processo.j][processo.tr - 1].nome;
+     const result ={ api, tribunal, numeroCNJ };
+    
+    const resultado = await this.consomeApi(result)
+
+    return resultado[0]._source.movimentos;
+  }
+
+
   validaNumero(n_processo: string){
     const numero = n_processo;
     const bcmod = (x, y) =>

@@ -15,4 +15,10 @@ export class AppController {
     const processo:any = n_processo;
     return this.appService.getProcesso(processo.n_processo);
   }
+
+  @Post('/mov')
+  postNumeroProcessoMov( @Body() n_processo: string)  {
+    const processo:any = n_processo;
+    return this.appService.getProcessoMov(processo.n_processo);
+  }
 }
