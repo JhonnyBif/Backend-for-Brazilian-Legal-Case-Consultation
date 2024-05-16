@@ -9,13 +9,14 @@ export class AppService {
 
   async getProcesso(n_processo: string) {
     const processo = this.validaNumero(n_processo);
+    const numeroCNJ = processo.numeroCNJ; 
 
     if (!this.tribunais[processo.j] || !this.tribunais[processo.j][processo.tr -1] || !this.tribunais[processo.j][processo.tr -1].link) {
       return console.error(`Erro! O Tribunal não possui API.`);
     }
     const api = this.tribunais[processo.j][processo.tr -1].link;
-    const numeroCNJ = this.tribunais[processo.j][processo.tr - 1].nome;
-     const result ={ api, numeroCNJ };
+    const tribunal = this.tribunais[processo.j][processo.tr - 1].nome;
+     const result ={ api, tribunal, numeroCNJ };
     
     const resultado = await this.consomeApi(result)
     return resultado;
@@ -72,7 +73,7 @@ export class AppService {
     return processo;
   }
 
-  async consomeApi(data: { api: string, numeroCNJ: string }): Promise<any> {
+  async consomeApi(data: { api: string, tribunal: string, numeroCNJ:string }): Promise<any> {
     try {
       const response = await axios.post(data.api, {
         query: {
@@ -90,7 +91,7 @@ export class AppService {
   
       if (!response.data.hits.hits[0]) {
         return console.error("Erro! Não foi possível encontrar dados do processo. Isso pode acontecer porque ele é sigiloso ou não há movimentações ou está tramitando em outro tribunal.");
-      }
+      } 
   
       return response.data.hits.hits;
     } catch (error) {
