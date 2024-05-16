@@ -14,10 +14,10 @@ export class AppService {
       return console.error(`Erro! O Tribunal não possui API.`);
     }
     const api = this.tribunais[processo.j][processo.tr -1].link;
-    const numeroCNJ = this.tribunais[processo.j][processo.tr].nome;
-     const reseult ={ api, numeroCNJ };
+    const numeroCNJ = this.tribunais[processo.j][processo.tr - 1].nome;
+     const result ={ api, numeroCNJ };
     
-    const resultado = await this.consomeApi(reseult)
+    const resultado = await this.consomeApi(result)
     return resultado;
   }
 
