@@ -15,26 +15,19 @@ Before getting started, make sure you have installed on your machine:
 
 ## Installation
 
-1. **Clone this repository:** `git clone https://github.com/your-username/your-repository.git`
-2. **Navigate to the project directory:** `cd your-repository`
+1. **Clone this repository:** `git clone https://github.com/JhonnyBif/Backend-for-Brazilian-Legal-Case-Consultation`
+2. **Navigate to the project directory:** `cd Backend-for-Brazilian-Legal-Case-Consultation`
 3. **Install the dependencies:** `npm install`
 
 ## Usage
 
 1. **Start the server:** `npm start`
 2. **Access** `http://localhost:3000` **in your browser.**
-3. **Send a POST request to** `http://localhost:3000` **with a JSON object in the request body containing the case number to be queried.**
+3. **Send a GET request to** `http://localhost:3000/case_number` **with a case number to be queried.**
 
-Example JSON object:
-
-```json
-{
-  "n_processo": "CASE NUMBER"
-}
-```
 ## Accessing the Frontend
 
-To access the frontend repository, please visit the [Frontend Repository](https://github.com/your-username/your-repository.git).
+To access the frontend repository, please visit the [Frontend Repository](https://github.com/JoaoVitorAlvesR/Frontend-for-Brazilian-Legal-Case-Consultation).
 
 ## Description
 
