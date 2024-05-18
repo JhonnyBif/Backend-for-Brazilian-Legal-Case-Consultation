@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -10,15 +10,13 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Post()
-  postNumeroProcesso( @Body() n_processo: string)  {
-    const processo:any = n_processo;
-    return this.appService.getProcesso(processo.n_processo);
+  @Get(':n_processo')
+  getNumeroProcesso(@Param('n_processo') n_processo: string) {
+    return this.appService.getProcesso(n_processo);
   }
 
-  @Post('/mov')
+  @Get('/mov/:n_processo')
   postNumeroProcessoMov( @Body() n_processo: string)  {
-    const processo:any = n_processo;
-    return this.appService.getProcessoMov(processo.n_processo);
+    return this.appService.getProcessoMov(n_processo);
   }
 }
