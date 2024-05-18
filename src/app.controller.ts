@@ -16,7 +16,7 @@ export class AppController {
   }
 
   @Get('/mov/:n_processo')
-  postNumeroProcessoMov( @Body() n_processo: string)  {
+  getNumeroProcessoMov( @Param('n_processo') n_processo: string)  {
     return this.appService.getProcessoMov(n_processo);
   }
 }
